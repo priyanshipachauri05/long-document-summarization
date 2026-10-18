@@ -18,4 +18,48 @@ Therefore, the research paper suggested the approach of context-aware hierarchic
 
 The research paper compares three context retrieval techniques (Extract, Retrieve and Cite-Based) along with two context merging techniques (Support and Replace) resulting in 6 context-aware hierarchical merging techniques- Extract-Support, Extract-Replace, Retrieve-Support, Retrieve-Replace, Cite-Support and Cite-Replace. Along with them, there two baseline models- Zero-shot and HMerge to compare the context-aware summarization model.
 
+#### Methodology
 
+1. Document chunking
+
+   The input document is divided into a sequence of smaller non-overlapping chunks based on           predefined maximum chunk size. Each chunk represents an independent unit that can be processed     by the LLM without exceeding its context window.
+
+2. Chunk Summarization
+
+   Each chunk is summarized by the Llama 3.1 Instant Large Language Model. Each document is given     as an input to the LLM with a summarization prompt to generate an abstractive summary. The
+   abstractive summaries ensure the generated summaries contain the key information rather than
+   extracting the sentences from the original text.
+
+3. Context Selection
+
+   Three methods of context selection were employed namely, Retrieve, Extract and Cite
+
+   3.1 Retrieve-based Context Selection
+
+   It is based on RAG (Retrieve Augmented Generation) method, here the summary is used as a query
+   to the LLM to retrieve the relevant context from the chunk, and then use the retrieved context
+   and the generated summary and merge them into the summary for higher level.
+
+   3.2 Extract-based Context Selection
+
+   The Extract context selection strategy identifies the most informative sentences from the
+   source document using frequency-based sentence ranking approach. The document is first divided
+   into individual sentences, after which a word frequency table is constructed by counting the
+   occurrence of each word in the document. Every sentence is then assigned a score based on the
+   cumulative frequencies of the words it contains. Sentences with higher scores are considered
+   more informative and are selected as the contextual evidence for subsequent summarization.
+
+   3.3 Citation-based Context Selection
+
+   During lower-level summary generation, the input passage is assigned a unique citation label and
+   labeled passages are provided to the Llama 3.1 model, which generate the summary containing the
+   citations to the passage used during summary generation. Then while context selection, the
+   source passage with highest ranked citations are selected as context for subsequent stages of
+   hierarchical merging.
+
+4. Context Merging
+
+   Two Context merging techniques were introduced in the research paper: Support and Replace.         In the Replace Integration strategy, the intermediate summary is replaced with the context
+   selected from the source document. In the Support Integration strategy, the previous
+   hierarchical level summary is retained and supplemented with the selected contextual evidence.
+      
