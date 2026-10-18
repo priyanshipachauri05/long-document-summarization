@@ -1,6 +1,6 @@
 ### Long Document Summarization
 
-# A. Project Overview
+#### A. Project Overview
 
 This project explores hierarchical summarization od long documents through a reproduction of the research paper _Context-Aware Hierarchical Merging for Long Document Summarization_ by Litu Ou and Mirella Lapata, University of Edinburgh.
 
