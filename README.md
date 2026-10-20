@@ -71,6 +71,6 @@ The research paper compares three context retrieval techniques (Extract, Retriev
 
    o ROUGE scores: Cite + Support has the highest ROUGE-1 and ROUGE-L scores, while Cite + Replace
      shares the highest ROUGE-2 score with H-Merge.
-   o Semantic Similarity: The BERTScore values are relatively close across the most methods,            although Cite + Support reported score is notably lower.
-   o Context Integration: Support and Replace produce different results depending on the context        selection strategy, suggesting that their effects should be examined together rather then          individually.
-   o No single method dominates all the reported metrics, making it important to evaluate               summarization quality from multiple perspective.
+   o Semantic Similarity: The BERTScore values are relatively close across the most methods, although Cite + Support reported score is notably lower.
+   o Context Integration: Support and Replace produce different results depending on the context selection strategy, suggesting that their effects should be examined            together rather than individually.
+   o No single method dominates all the reported metrics, making it important to evaluate summarization quality from multiple perspective.
